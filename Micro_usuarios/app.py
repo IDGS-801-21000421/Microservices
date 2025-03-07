@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify, render_template
 from flask_mysqldb import MySQL
-from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.security import generate_password_hash,  check_password_hash
 
 app = Flask(__name__)
 
@@ -22,7 +22,7 @@ def register():
         nombre = data['nombre']
         email = data['email']
         password = generate_password_hash(data['password'])
-
+        
         cursor = mysql.connection.cursor()
         cursor.execute(
             'INSERT INTO usuarios(nombre, email, password) VALUES (%s, %s, %s)', 
